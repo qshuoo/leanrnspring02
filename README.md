@@ -41,20 +41,28 @@ Spring是一个分层的JavaSE/EE full-stack(一站式)轻量级开源框架。�
 
 #### 核心概念
 1.	横切关注点
+
 	对哪些方法进行拦截，拦截后怎么处理，这些关注点称之为横切关注点
 2.	切面（aspect）
+
 	类是对物体特征的抽象，切面就是对横切关注点的抽象
 3.	连接点（joinpoint）
+
 	被拦截到的点，因为Spring只支持方法类型的连接点，所以在Spring中连接点指的就是被拦截到的方法，实际上连接点还可以是字段或者构造器
 4.	切入点（pointcut）
+
 	对连接点进行拦截的定义
 5.	通知（advice）
+
 	所谓通知指的就是指拦截到连接点之后要执行的代码，通知分为前置、后置、异常、最终、环绕通知五类
 6.	目标对象
+
 	代理的目标对象
 7.	织入（weave）
+
 	将切面应用到目标对象并导致代理对象创建的过程
 8.	引入（introduction）
+
 	在不修改代码的前提下，引入可以在运行期为类动态地添加一些方法或字段
 	
 	
@@ -97,20 +105,26 @@ Spring是一个分层的JavaSE/EE full-stack(一站式)轻量级开源框架。�
 
 3.	Bean的生命周期
 	`默认情况下,会在容器初始化时实例化,我们可以指定Bean节点的lazy-init=”true”来延迟初始化bean`
+	
 	bean初始化及销毁监听的三种配置方式
+	
 	配置bean时，通过init-method和destroy-method属性为bean指定初始化和销毁方法
 	注解方式配置
 	实现InitializingBean,DisposableBean接口
 
 #### 配置aop
 1.	<aop:config>
+
 	切面配置，在这之中将切面织入目标对象
 2.	<aop:aspect>
+
 	通过ref指定切面角色类
 3.	<aop:pointcut>
+
 	定义切点
 	expression 定义切入范围，参数等信息
 4.	通知切面
+
 	<aop:before method=""/> 执行之前通知
 	<aop:after method=""/>	执行之后通知
 	<aop:around method=""/>	环绕，之前和之后的集合
