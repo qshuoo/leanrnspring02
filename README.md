@@ -24,10 +24,14 @@ Spring是一个分层的JavaSE/EE full-stack(一站式)轻量级开源框架。�
 
 #### IOC容器的实现方式
 1.	BeanFactory
-2.	ApplicationContext     
+2.	ApplicationContext    
+ 
 	ClassPathXmlApplicationContext 对应类路径下的XML格式的配置文件
+	
 	FileSystemXmlApplicationContext 对应文件系统中的XML格式的配置文件
+	
 	ConfigurableApplicationContext 是ApplicationContext的子接口，包含一些扩展方法
+	
 	WebApplicationContext 专门为WEB应用而准备的，它允许从相对于WEB根目录的路径中完成初始化工作
 
 ### Spring AOP
