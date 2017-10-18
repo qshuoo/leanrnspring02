@@ -102,6 +102,7 @@ Spring是一个分层的JavaSE/EE full-stack(一站式)轻量级开源框架。�
 *	session 每一次会话都会产生一个新的bean，仅适用于WebApplicationContext环境。
 
 3.	Bean的生命周期
+	
 	`默认情况下,会在容器初始化时实例化,我们可以指定Bean节点的lazy-init=”true”来延迟初始化bean`
 	
 	bean初始化及销毁监听的三种配置方式
@@ -128,3 +129,22 @@ Spring是一个分层的JavaSE/EE full-stack(一站式)轻量级开源框架。�
 	<aop:after-throwing method=""/>	抛出异常时通知
 	<aop:after-returning method=""/>	返回时通知，正常和异常都会通知
 
+#### spEL
+
+1.	概述
+
+	Spring Expression Language，Spring表达式语言
+2.	SpEL使用#{…}作为定界符
+3.	用法
+*	引用其他bean	#{user}
+*	引用其他bean的属性值作为自己某个属性的值		#{user.username}
+*	调用非静态方法	#{user.getUsername()}
+*	调用静态方法		#{T(com.qshuoo.pojo.User).getUser())}
+*	运算符
+
+	算术运算符：+、-、*、/、%、^
+	字符串连接：+
+	比较运算符：<、>、==、<=、>=、lt、gt、eq、le、ge
+	逻辑运算符：and, or, not, |
+	三目运算符：判断条件?判断结果为true时的取值:判断结果为false时的取值
+	正则表达式：matches
