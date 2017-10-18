@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<!-- 引用属性文件到当前xml，可以通过key获取value -->
+	<context:property-placeholder location="classpath:db.properties" />
+	<bean id="school" class="com.qshuoo.pojo.School">
+		<property name="id" value="1"></property>
+		<property name="name" value="阳光花花幼儿园"></property>
+	</bean>
+
+	<bean id="user" class="com.qshuoo.pojo.User">
+		<property name="id" value="#{1+1}"></property>
+		<property name="name" value="wxx"></property>
+		<property name="school" ref="school"></property>
+		<property name="school.id" value="2"></property>
+		<property name="lesson">
+			<list>
+				<value>语文</value>
+				<value>英语</value>
+				<value>数学</value>
+			</list>
+		</property>
+		<property name="grade">
+			<map>
+				<entry key="语文" value="5"></entry>
+				<entry key="数学" value="6"></entry>
+				<entry key="英语" value="7"></entry>
+			</map>
+		</property>
+		
+	</bean>
+	
+	<bean id="connMsg" class="com.qshuoo.pojo.ConnMsg">
+		<property name="driver" value="${driver}"></property>
+		<property name="url" value="${url}"></property>
+		<property name="user" value="${user}"></property>
+		<property name="pwd" value="${pwd}"></property>
+	</bean>
+	
+	
+	<bean id="timeHandle" class="com.qshuoo.aop.TimeHandle"></bean>
+	<bean id="helloWorld" class="com.qshuoo.aop.HelloWorld"></bean>
+	
+	<bean id="printHello" class="com.qshuoo.aop.PrintHello"></bean>
+	
+	<!-- 切面配置，这里就是把切面织入目标对象 -->
+	<aop:config>
+		<!-- 通过ref指定切面角色类 -->
+		<aop:aspect id="time" ref="timeHandle">
+			<!-- 切点，expression表达范围，符合表达式的方法在执行时会织入切面 -->
+			<aop:pointcut id="sayhello" expression="execution (* hello(..))"></aop:pointcut>
+			<!-- 定义通知，切点已经确定，我们需要定义到底是切入点执行之前还是之后甚至环绕的方式执行切面 -->
+			<!-- 把切点和方法进行绑定，确定切点到底执行哪一个方法 -->
+			<aop:before method="beginTime" pointcut-ref="sayhello" />
+			<aop:after method="endTime" pointcut-ref="sayhello" />
+			
+			<!-- 环绕，也就是之前和之后的集合 -->
+			<!-- <aop:around method="beginTime" pointcut-ref="allMethod" /> -->
+			<!-- 正常执行完毕不会执行切面，异常时执行切面 -->
+			<!-- <aop:after-throwing method=""/> -->
+			<!-- 最终都会执行，无论是异常还是正常运行完毕都会执行到切面逻辑 -->
+			<!-- <aop:after-returning method="" /> -->
+		</aop:aspect>
+	</aop:config>
+
+</beans>
