@@ -95,7 +95,7 @@ Spring是一个分层的JavaSE/EE full-stack(一站式)轻量级开源框架。�
 *	继承
 *	引用外部属性文件
 
-2.	bean的作用域
+2.	bean的作用域scope
 *	Singleton(默认)  只会存在一个共享的bean实例
 *	Prototype 每次对该bean请求时都会创建一个新的bean实例 。
 *	request 每一次HTTP请求都会产生一个新的bean，仅适用于WebApplicationContext环境
@@ -143,8 +143,15 @@ Spring是一个分层的JavaSE/EE full-stack(一站式)轻量级开源框架。�
 *	运算符
 
 	算术运算符：+、-、*、/、%、^
+	
 	字符串连接：+
+	
 	比较运算符：<、>、==、<=、>=、lt、gt、eq、le、ge
+	
 	逻辑运算符：and, or, not, |
+	
 	三目运算符：判断条件?判断结果为true时的取值:判断结果为false时的取值
+	
 	正则表达式：matches
+	
+
