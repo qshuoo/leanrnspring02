@@ -153,5 +153,35 @@ Spring是一个分层的JavaSE/EE full-stack(一站式)轻量级开源框架。�
 	三目运算符：判断条件?判断结果为true时的取值:判断结果为false时的取值
 	
 	正则表达式：matches
+
+#### 与hibernate整合
+##### 编写sessionFactory bean	
+
+	`一般不直接使用sessionFactory bean，而是选择注入HibernateTemplate或实现HibernateDaoSupport接口，其提供了对session，与transaction的管理与使用`
+	
+1.	配置方式：
+	
+*	整合hibernate.cfg.xml文件 
+	
+	configLocations用于配置hibernate.cfg.xml文件路径
+	
+	<property name="configLocations"> 		<value>classpath:hibernate.cfg.xml</value> 
+	</property>
+
+*	配置sessionFactory属性
+
+	配置数据源dataSource
+ 	
+	配置操作属性hibernateProperties
+ 	
+	配置映射路径mappingDirectoryLocations，只需要设定到目录，spring会读取目录下所有的以hbm.xml结尾的文件
+	
+2.	配置事务
+*	配置事务管理器
+*	配置事务传播特性
+*	配置切点参与事务
+	
+	
+	
 	
 
