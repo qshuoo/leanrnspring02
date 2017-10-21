@@ -181,7 +181,10 @@ Spring是一个分层的JavaSE/EE full-stack(一站式)轻量级开源框架。�
 *	配置事务传播特性
 *	配置切点参与事务
 	
-	
+#### 与web整合
+1.	编写web。xml设置变量映射applicationcontext.xml
+
+2.	在servlet中获取bean工厂采用WebApplicationContext
 	
 	
 
